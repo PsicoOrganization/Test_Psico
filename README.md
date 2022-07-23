@@ -10,7 +10,7 @@
 
 # Modelo base de datos de Psico
 
-<img src="screenshots/model-DB-Psico.png" width="200">
+<img src="screenshots/model-DB-Psico.png" width="300" height="500">
 
 ## Migracion de BitBucket a GitHub
 
