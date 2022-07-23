@@ -1,6 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, BaseUserManager
 from django.contrib.auth.hashers import make_password
+from .city import City
+from .type_speacialty import TypeSpecialty
 
 
 class PsychologistManager(BaseUserManager):
@@ -33,11 +35,18 @@ class Psychologist(AbstractBaseUser, PermissionsMixin):
     password = models.CharField('Password',max_length=256)
     name = models.CharField('Name',max_length=30)
     email = models.EmailField('Email',max_length=100)
+    city = models.ForeignKey(City, related_name='psychologist', on_delete=models.CASCADE)
     identification = models.CharField('Identification',max_length=20)
     address = models.CharField('Address',max_length=60)
-    phone = models.IntegerField() # OJO
-    description = models.TextField() #OJO
-    gender = models.CharField('Gender',max_length=10) # Se puede cambiar por un dominio o crear una tabla de Gender
+    phone = models.CharField('Phone',max_length=10)
+    typeSpecialty = models.ForeignKey(TypeSpecialty, related_name='psychologist', on_delete=models.CASCADE)
+    description = models.TextField()
+    GENDER = (
+        ('F', 'Female'),
+        ('M', 'Male'),
+        ('O', 'Other'),
+    )  #Dominio del genero
+    gender = models.CharField('Gender',max_length=1,choices=GENDER)
     price = models.DecimalField(max_digits = 8, decimal_places = 2)
 
     def save(self, **kwargs):
@@ -47,4 +56,3 @@ class Psychologist(AbstractBaseUser, PermissionsMixin):
 
     objects = PsychologistManager()
     USERNAME_FIELD = 'username'
-
