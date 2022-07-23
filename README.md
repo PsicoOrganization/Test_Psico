@@ -8,11 +8,16 @@
 ### Wilson Arbey Delgado Manzo
 ### Michael Steven Mogollon Leon
 
+# Modelo base de datos de Psico
+
+<img src="screenshots/model-DB-Psico.png" width="200">
+
 ## Migracion de BitBucket a GitHub
 
 Antiguo repositorio **https://bitbucket.org/wilsonarbeydelgado/psico/src/master/**. 
 
 Se realizo la migracion para automatizar los despliegues en Heroku y facilitar el desarrollo del proyecto
+
 # Como instalar el proyecto.
 
 # 1. Clonar el repositorio 
