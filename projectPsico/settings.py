@@ -73,6 +73,8 @@ REST_FRAMEWORK = {
     )
 }
 
+AUTH_USER_MODEL = 'appPsico.Psychologist'
+
 ROOT_URLCONF = 'projectPsico.urls'
 
 TEMPLATES = [
@@ -91,7 +93,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'projectPsico.wsgi.application'
+# WSGI_APPLICATION = 'projectPsico.wsgi.application'
 
 
 # Database
@@ -100,10 +102,10 @@ WSGI_APPLICATION = 'projectPsico.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'd69118id9bbm5k',
-        'USER': 'pxvunuptbpunfb',
-        'PASSWORD': 'b703fd8e9f96f336f59b026cdf452ed084dbf8f46bc767ecc71fdeb881e2ba48',
-        'HOST': 'ec2-52-73-184-24.compute-1.amazonaws.com',
+        'NAME': 'd6iplino2nuqs2',
+        'USER': 'nbnyfrhojsqzjk',
+        'PASSWORD': 'f6f28563e4313c99e5d86f9c78fbc0ecce3bd49704256d1ddfe56f70bc0b4b2b',
+        'HOST': 'ec2-100-26-39-41.compute-1.amazonaws.com',
         'PORT': '5432',
     }
 }
