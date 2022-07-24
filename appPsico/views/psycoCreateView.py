@@ -4,7 +4,7 @@ from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 
 from appPsico.serializers.psychologistSerializer import PsychologistSerializer
 
-class PsychologistCreateView(views.APIView):
+class PsycoCreateView(views.APIView):
     def post(self, request, *args, **kwargs):
         serializer = PsychologistSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
