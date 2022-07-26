@@ -35,12 +35,12 @@ class Psychologist(AbstractBaseUser, PermissionsMixin):
     password = models.CharField('Password',max_length=256)
     name = models.CharField('Name',max_length=30)
     email = models.EmailField('Email',max_length=100)
-    city = models.ForeignKey(City, related_name='psychologist', on_delete=models.CASCADE)
+    city = models.ForeignKey(City, related_name='City', on_delete=models.CASCADE)
     identification = models.CharField('Identification',max_length=20)
-    address = models.CharField('Address',max_length=60)
+    address = models.CharField('Address',max_length=60,blank=True,default='')
     phone = models.CharField('Phone',max_length=10)
-    typeSpecialty = models.ForeignKey(TypeSpecialty, related_name='psychologist', on_delete=models.CASCADE)
-    description = models.TextField()
+    typeSpecialty = models.ForeignKey(TypeSpecialty, related_name='TypeSpecialty', on_delete=models.CASCADE)
+    description = models.CharField('Description',max_length=500,blank=True,default='')
     GENDER = (
         ('F', 'Female'),
         ('M', 'Male'),

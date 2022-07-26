@@ -21,20 +21,20 @@ class PsychologistSerializer(serializers.ModelSerializer):
         typeSpecialtyData = validated_data.pop('typeSpecialty')
         accountData = validated_data.pop('account')
 
-        psychologistInstance = Psychologist.objects.create(**validated_data)
+        cityInstance = City.objects.create(**cityData)
+        typeSpecialtyInstance = TypeSpecialty.objects.create(**typeSpecialtyData)
 
-        City.objects.create(psychologist=psychologistInstance,**cityData)
-        TypeSpecialty.objects.create(psychologist=psychologistInstance,**typeSpecialtyData)
-        Account.objects.create(psychologist=psychologistInstance, **accountData)
+        psychologistInstance = Psychologist.objects.create(city=cityInstance,type=typeSpecialtyInstance,**validated_data)
+        Account.objects.create(user=psychologistInstance, **accountData)
         return psychologistInstance
     
 
 
     def to_representation(self, obj):
         psychologist = Psychologist.objects.get(id=obj.id)
-        account = Account.objects.get(psychologist=obj.id)
-        typeSpecialty = TypeSpecialty.objects.get(psychologist=obj.id)
-        city = City.objects.get(psychologist=obj.id)
+        account = Account.objects.get(user=obj.id)
+        typeSpecialty = TypeSpecialty.objects.get(psychologist.typeSpecialty)
+        city = City.objects.get(psychologist.city)
         return {
             'id': psychologist.id,
             'username': psychologist.username,
@@ -42,14 +42,14 @@ class PsychologistSerializer(serializers.ModelSerializer):
             'name': psychologist.name,
             'email': psychologist.email,
             'city': {
-                'id_city': city.id_city,
+                'id_city': city.id,
                 'city': city.city
             },
             'identification': psychologist.identification,
             'address': psychologist.address,
             'phone': psychologist.phone,
             'typeSpecialty': {
-                'id_type': typeSpecialty.id_type,
+                'id_typeSpecialty': typeSpecialty.id,
                 'typeSpecialty': typeSpecialty.typeSpecialty
             },
             'description': psychologist.description,
