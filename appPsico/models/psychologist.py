@@ -48,6 +48,7 @@ class Psychologist(AbstractBaseUser, PermissionsMixin):
     )  #Dominio del genero
     gender = models.CharField('Gender',max_length=1,choices=GENDER)
     price = models.DecimalField(max_digits = 8, decimal_places = 2)
+    lastChangeDate = models.DateTimeField(auto_now=True)
 
     def save(self, **kwargs):
         some_salt = 'mMUj0DrIK6vgtdIYepkIxN'
