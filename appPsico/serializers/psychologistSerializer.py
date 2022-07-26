@@ -27,6 +27,8 @@ class PsychologistSerializer(serializers.ModelSerializer):
         TypeSpecialty.objects.create(psychologist=psychologistInstance,**typeSpecialtyData)
         Account.objects.create(psychologist=psychologistInstance, **accountData)
         return psychologistInstance
+    
+
 
     def to_representation(self, obj):
         psychologist = Psychologist.objects.get(id=obj.id)
@@ -40,22 +42,20 @@ class PsychologistSerializer(serializers.ModelSerializer):
             'name': psychologist.name,
             'email': psychologist.email,
             'city': {
-                'id': city.id,
+                'id_city': city.id_city,
                 'city': city.city
             },
             'identification': psychologist.identification,
             'address': psychologist.address,
             'phone': psychologist.phone,
             'typeSpecialty': {
-                'id': typeSpecialty.id,
+                'id_type': typeSpecialty.id_type,
                 'typeSpecialty': typeSpecialty.typeSpecialty
             },
             'description': psychologist.description,
             'gender': psychologist.gender,
             'price': psychologist.price,
             'account':{
-                'id': account.id,
-                'balance': account.balance,
                 'lastChangeDate': account.lastChangeDate,
                 'isActive': account.isActive
             }

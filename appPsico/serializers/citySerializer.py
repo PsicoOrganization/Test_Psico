@@ -4,4 +4,4 @@ from rest_framework import serializers
 class CitySerializer(serializers.ModelSerializer):
     class Meta:
         model = City
-        fields = ['id', 'city']
+        fields = '__all__'
